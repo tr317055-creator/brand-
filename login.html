@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Car & New — Home</title>
+  <style>
+    :root{
+      --bg:#071827; --accent:#0ea5e9; --muted:#94a3b8; --card:#0b1220;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    body{margin:0;min-height:100vh;background:linear-gradient(180deg,#071025 0%, #071827 60%);color:#e6eef8}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022632}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
+    .hero{padding:48px 28px;display:flex;gap:24px;align-items:center;justify-content:space-between}
+    .hero h1{margin:0;font-size:32px}
+    .cta{display:flex;gap:12px}
+    .btn{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#022632;border:0;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:0 28px 48px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+    footer{padding:18px 28px;color:var(--muted)}
+    a.home-link{color:var(--accent);text-decoration:none;font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">C&N</div>
+      <div>
+        <div style="font-weight:700">Car & New</div>
+        <div style="font-size:12px;color:var(--muted)">Find the best new cars & deals</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html" class="home-link">Home</a>
+      <a href="login.html" aria-label="Sign in">Sign in</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Discover your next car</h1>
+        <p style="color:var(--muted);max-width:56ch">Browse new listings, save favorites, and get tailored financing estimates — all in one place.</p>
+        <div class="cta" style="margin-top:16px">
+          <a class="btn" href="login.html" role="button">Sign in</a>
+          <a class="btn ghost" href="#" role="button">Browse listings</a>
+        </div>
+      </div>
+
+      <div style="max-width:360px">
+        <img alt="New car" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=960&auto=format&fit=crop&ixlib=rb-4.0.3&s=ce0d1e860d3b5a7b82cddb3d3a73b1f3" style="width:100%;border-radius:12px;display:block"/>
+      </div>
+    </section>
+
+    <section class="cards" aria-label="Popular features">
+      <div class="card">
+        <h3 style="margin:0 0 8px 0">Local dealers</h3>
+        <p style="margin:0;color:var(--muted)">Find cars available near you with test-drive booking.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px 0">Advanced search</h3>
+        <p style="margin:0;color:var(--muted)">Filter by make, model, features, range and financing options.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px 0">Personalized alerts</h3>
+        <p style="margin:0;color:var(--muted)">Get notified when new matches appear.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Car & New — <a href="login.html" style="color:var(--accent)">Sign in</a> to manage your favorites.
+  </footer>
+
+  <script>
+    // Small script to show current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
