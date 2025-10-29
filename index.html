@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Welcome</title>
+  <meta name="description" content="Welcome page — a clean responsive starter landing page." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent-1:#0ea5a4;
+      --accent-2:#6366f1;
+      --text:#0f172a;
+      --glass: rgba(255,255,255,0.6);
+    }
+    [data-theme="dark"]{
+      --bg: #071024;
+      --card: rgba(12,17,30,0.9);
+      --muted: #9aa7bd;
+      --accent-1: #06b6d4;
+      --accent-2: #8b5cf6;
+      --text: #e6eef8;
+      --glass: rgba(255,255,255,0.02);
+    }
+
+    /* Global reset + font */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,0.08), transparent 10%),
+                  radial-gradient(900px 450px at 90% 90%, rgba(14,165,164,0.06), transparent 10%),
+                  var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:2rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+      border-radius:14px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.12);
+      overflow:hidden;
+      backdrop-filter: blur(8px);
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:0;
+      min-height:520px;
+    }
+    /* card fallback for dark theme */
+    [data-theme="dark"] .container{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 8px 40px rgba(2,6,23,0.6);
+    }
+
+    /* Left column (hero) */
+    .hero{
+      padding:48px;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      justify-content:center;
+    }
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-weight:600;
+      color:var(--accent-2);
+      background: linear-gradient(90deg, rgba(99,102,241,0.12), rgba(14,165,164,0.06));
+      padding:6px 10px;
+      border-radius:999px;
+      width:max-content;
+      font-size:0.9rem;
+      letter-spacing:0.2px;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      line-height:1.02;
+      letter-spacing:-0.6px;
+    }
+    p.lead{
+      margin:0;
+      color:var(--muted);
+      max-width:60ch;
+    }
+
+    .cta-row{
+      margin-top:12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      padding:10px 16px;
+      border-radius:10px;
+      font-weight:600;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      transition:transform .14s ease, box-shadow .14s ease, opacity .14s;
+      text-decoration:none;
+      color:inherit;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{
+      background: linear-gradient(90deg,var(--accent-2), var(--accent-1));
+      color:white;
+      box-shadow: 0 8px 20px rgba(99,102,241,0.12);
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(15,23,42,0.06);
+      color:var(--text);
+    }
+    [data-theme="dark"] .btn-ghost{
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .features{
+      display:flex;
+      gap:14px;
+      margin-top:22px;
+      flex-wrap:wrap;
+    }
+    .feature{
+      background:var(--glass);
+      padding:12px 14px;
+      border-radius:10px;
+      min-width:140px;
+      box-shadow: 0 2px 10px rgba(2,6,23,0.04);
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    /* Right column (panel) */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+      padding:28px;
+      border-left:1px solid rgba(15,23,42,0.04);
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      justify-content:center;
+      align-items:center;
+    }
+    [data-theme="dark"] .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-left:1px solid rgba(255,255,255,0.03);
+    }
+
+    .logo{
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--accent-2), var(--accent-1));
+      color:white;
+      font-weight:700;
+      font-size:1.2rem;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.12);
+    }
+    .panel h3{margin:0}
+    .panel p{margin:0;color:var(--muted);text-align:center}
+    .meta{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+      align-items:center;
+    }
+    .meta small{color:var(--muted)}
+
+    footer{
+      margin-top:18px;
+      font-size:0.85rem;
+      color:var(--muted);
+    }
+
+    /* Small screens */
+    @media (max-width:880px){
+      body{padding:1rem}
+      .container{grid-template-columns:1fr; padding:0; border-radius:12px}
+      .panel{order: -1; border-left:0; border-bottom:1px solid rgba(15,23,42,0.04); width:100%}
+      [data-theme="dark"] .panel{border-bottom:1px solid rgba(255,255,255,0.03)}
+    }
+
+    /* Small nice entrance */
+    .fade-in{
+      opacity:0;
+      transform: translateY(8px);
+      animation:fadeInUp .6s forwards;
+    }
+    @keyframes fadeInUp{
+      to{opacity:1; transform:none}
+    }
+
+    /* subtle focus outline for keyboard users */
+    :focus{outline:3px solid rgba(99,102,241,0.12); outline-offset:3px}
+    .sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body data-theme="light">
+  <main class="container" role="main" aria-labelledby="main-heading">
+    <section class="hero" aria-label="Welcome hero">
+      <div class="kicker fade-in" style="animation-delay:.05s">Welcome</div>
+      <h1 id="main-heading" class="fade-in" style="animation-delay:.12s">Hello — welcome to your new project</h1>
+      <p class="lead fade-in" style="animation-delay:.18s">
+        A simple, responsive welcome page template you can use as a starting point for landing pages,
+        dashboards, or prototypes. Lightweight, accessible, and easy to customize.
+      </p>
+
+      <div class="cta-row fade-in" style="animation-delay:.24s">
+        <a class="btn btn-primary" href="#" role="button" id="get-started">Get started</a>
+        <a class="btn btn-ghost" href="#" role="button">Learn more</a>
+
+        <!-- Theme toggle -->
+        <button id="theme-toggle" class="btn btn-ghost" aria-pressed="false" title="Toggle theme">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+          <span class="sr-only">Toggle theme</span>
+        </button>
+      </div>
+
+      <div class="features fade-in" style="animation-delay:.30s" aria-hidden="false">
+        <div class="feature">Responsive</div>
+        <div class="feature">Accessible</div>
+        <div class="feature">Customizable</div>
+      </div>
+
+      <footer class="fade-in" style="animation-delay:.36s">
+        <small>Made with care — © <span id="year"></span></small>
+      </footer>
+    </section>
+
+    <aside class="panel" aria-label="Getting started panel">
+      <div class="logo" aria-hidden="true">WP</div>
+      <h3 class="fade-in" style="animation-delay:.08s">Ready when you are</h3>
+      <p class="fade-in" style="animation-delay:.14s">Use the Get started button to create a new project, or customize this page to match your brand.</p>
+
+      <div class="meta fade-in" style="animation-delay:.20s">
+        <small>Built for speed</small>
+      </div>
+
+      <div style="height:8px" aria-hidden="true"></div>
+
+      <a class="btn btn-primary fade-in" href="#" style="animation-delay:.26s">Create project</a>
+    </aside>
+  </main>
+
+  <script>
+    // set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // theme toggle (light/dark)
+    const body = document.body;
+    const btn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    // initialize from prefers-color-scheme or localStorage
+    const stored = localStorage.getItem('site-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (stored) {
+      body.setAttribute('data-theme', stored);
+      icon.textContent = stored === 'dark' ? '☀️' : '🌙';
+      btn.setAttribute('aria-pressed', stored === 'dark');
+    } else {
+      body.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      icon.textContent = prefersDark ? '☀️' : '🌙';
+      btn.setAttribute('aria-pressed', prefersDark);
+    }
+
+    btn.addEventListener('click', () => {
+      const current = body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', next);
+      localStorage.setItem('site-theme', next);
+      icon.textContent = next === 'dark' ? '☀️' : '🌙';
+      btn.setAttribute('aria-pressed', next === 'dark');
+    });
+
+    // small progressive enhancement: keyboard focus detection to show focus outlines only for keyboard users
+    (function(){
+      let hadKeyboardEvent = false;
+      function handleFirstTab(e){
+        if (e.key === 'Tab') {
+          hadKeyboardEvent = true;
+          document.documentElement.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+</body>
+</html>
